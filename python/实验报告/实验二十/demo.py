@@ -1,6 +1,5 @@
 from random import choice, randint
 from openpyxl import Workbook, load_workbook
-# 生成随机数据
 def generateRandomInformation(filename):
     workbook = Workbook()
     worksheet = workbook.worksheets[0]
@@ -40,9 +39,9 @@ def getResult(oldfile, newfile):
         # 获取当前学生当前课程的成绩，若不存在，返回 0
         f = t.get(subject, 0)
         # 只保留该学生该课程的最高成绩
-            if grade > f:
-                t[subject] = grade
-                result[name] = t
+        if grade > f:
+            t[subject] = grade
+            result[name] = t
 
     workbook1 = Workbook()
     worksheet1 = workbook1.worksheets[0]
@@ -56,8 +55,8 @@ def getResult(oldfile, newfile):
 
     workbook1.save(newfile)
 
-    if __name__ == '__main__':
-        oldfile = r'd:\test.xlsx'
-        newfile = r'd:\result.xlsx'
-        generateRandomInformation(oldfile)
-        getResult(oldfile, newfile)
+if __name__ == '__main__':
+    oldfile = r'd:\test.xlsx'
+    newfile = r'd:\result.xlsx'
+    generateRandomInformation(oldfile)
+    getResult(oldfile, newfile)
